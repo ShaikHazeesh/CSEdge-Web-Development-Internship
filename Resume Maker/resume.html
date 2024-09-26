@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Maker</title>
+    <link rel="stylesheet" href="resume.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzip/3.1.1/pizzip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.25.2/docxtemplater.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@5/tinymce.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="resume-form">
+            <h2>Personal Information</h2>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <input type="text" id="linkedin" placeholder="LinkedIn Profile">
+            
+            <h2>Professional Summary</h2>
+            <textarea id="summary" placeholder="Professional Summary" required></textarea>
+            
+            <h2>Skills</h2>
+            <textarea id="skills" placeholder="List your skills" required></textarea>
+            
+            <h2>Keywords (for ATS)</h2>
+            <input type="text" id="keywords" placeholder="Job-relevant keywords">
+            
+            <h2>Education</h2>
+            <div id="education-section">
+                <div class="education-entry">
+                    <input type="text" placeholder="Degree" required>
+                    <input type="text" placeholder="Institution" required>
+                    <input type="text" placeholder="Year of Graduation" required>
+                    <textarea placeholder="Relevant coursework or achievements" required></textarea>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('education-section', 'Education')">Add More Education</button>
+            
+            <h2>Experience</h2>
+            <div id="experience-section">
+                <div class="experience-entry">
+                    <input type="text" placeholder="Job Title" required>
+                    <input type="text" placeholder="Company" required>
+                    <input type="text" placeholder="Duration" required>
+                    <textarea placeholder="Responsibilities and achievements" required></textarea>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('experience-section', 'Experience')">Add More Experience</button>
+            
+            <h2>Projects</h2>
+            <div id="project-section">
+                <div class="project-entry">
+                    <input type="text" placeholder="Project Title" required>
+                    <textarea placeholder="Description" required></textarea>
+                    <input type="text" placeholder="Role in the project" required>
+                    <textarea placeholder="Outcome or results" required></textarea>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('project-section', 'Project')">Add More Projects</button>
+            
+            <h2>Certifications</h2>
+            <div id="certification-section">
+                <div class="certification-entry">
+                    <input type="text" placeholder="Certification Name" required>
+                    <input type="text" placeholder="Issuing Organization" required>
+                    <input type="text" placeholder="Date of Issue" required>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('certification-section', 'Certification')">Add More Certifications</button>
+            
+            <h2>Languages</h2>
+            <div id="language-section">
+                <div class="language-entry">
+                    <input type="text" placeholder="Language" required>
+                    <input type="text" placeholder="Proficiency Level" required>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('language-section', 'Language')">Add More Languages</button>
+            
+            <h2>References</h2>
+            <div id="reference-section">
+                <div class="reference-entry">
+                    <input type="text" placeholder="Name" required>
+                    <input type="text" placeholder="Position" required>
+                    <input type="text" placeholder="Contact Information" required>
+                </div>
+            </div>
+            <button type="button" class="add-button" onclick="addSection('reference-section', 'Reference')">Add More References</button>
+            
+            <h2>Template Choice</h2>
+            <select id="template-choice">
+                <option value="modern">Modern</option>
+                <option value="classic">Classic</option>
+                <option value="creative">Creative</option>
+                <option value="technical">Technical</option>
+                <option value="ats">ATS-Friendly</option>
+            </select>
+            
+            <h2>Format Choice</h2>
+            <select id="format-choice">
+                <option value="pdf">PDF</option>
+                <option value="docx">Docx</option>
+                <option value="txt">Txt</option>
+            </select>
+            
+            <button type="submit">Generate Resume</button>
+        </form>
+        
+        <div class="preview-container">
+            <h2>Live Preview</h2>
+            <div id="resume-preview"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
